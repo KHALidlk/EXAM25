@@ -1,0 +1,37 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:h="http://xmlns.jcp.org/jsf/html"
+      xmlns:f="http://xmlns.jcp.org/jsf/core">
+
+<h:head>
+    <title>Borrow a Document</title>
+</h:head>
+<h:body>
+    <h:form>
+        <h:panelGrid columns="2">
+            <h:outputLabel for="documentId" value="Document ID:" />
+            <h:inputText id="documentId" value="#{borrowBean.borrow.documentId}" />
+
+            <h:outputLabel for="userId" value="User ID:" />
+            <h:inputText id="userId" value="#{borrowBean.borrow.userId}" />
+
+            <h:commandButton value="Borrow Document" action="#{borrowBean.borrowDocument}" />
+        </h:panelGrid>
+    </h:form>
+
+    <h:dataTable value="#{borrowBean.allBorrow}" var="borrow">
+        <h:column>
+            <f:facet name="header">Document ID</f:facet>
+            #{borrow.documentId}
+        </h:column>
+        <h:column>
+            <f:facet name="header">User ID</f:facet>
+            #{borrow.userId}
+        </h:column>
+        <h:column>
+            <f:facet name="header">Borrow Date</f:facet>
+            #{borrow.borrowDate}
+        </h:column>
+    </h:dataTable>
+</h:body>
+</html>

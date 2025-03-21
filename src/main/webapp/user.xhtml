@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:h="http://xmlns.jcp.org/jsf/html"
+      xmlns:f="http://xmlns.jcp.org/jsf/core"
+>
+
+<h:head>
+    <title>Gestion des Emprunts</title>
+</h:head>
+
+<h:body>
+    <h:form>
+        <h2>Liste des Emprunts</h2>
+        <h:dataTable value="#{borrowBean.allBorrow}" var="borrow" border="1">
+            <h:column>
+                <f:facet name="header">ID</f:facet>
+                #{borrow.id}
+            </h:column>
+            <h:column>
+                <f:facet name="header">Date d'emprunt</f:facet>
+                #{borrow.dateBorrow}
+            </h:column>
+            <h:column>
+                <f:facet name="header">Document</f:facet>
+                #{borrow.document.title}
+            </h:column>
+        </h:dataTable>
+
+        <h2>Emprunter un Document</h2>
+        <h:panelGrid columns="2">
+            <h:outputLabel for="docId" value="ID Document:"/>
+            <h:inputText id="docId" value="#{borrowBean.borrow.document.id}" />
+
+            <h:commandButton value="Emprunter" action="#{borrowBean.borrowDocument}" />
+        </h:panelGrid>
+    </h:form>
+</h:body>
+</html>
